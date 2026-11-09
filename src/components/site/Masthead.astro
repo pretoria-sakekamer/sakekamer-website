@@ -1,0 +1,80 @@
+---
+/**
+ * Global masthead (Masthead.jsx): navy utility bar, paper masthead, sticky nav with 3px double rule.
+ * ≤960px it becomes logo + menu button + "Word 'n lid", and the nav becomes a drop-down panel.
+ */
+import { Button } from '../ds/core/Button';
+import { IconButton } from '../ds/core/IconButton';
+import { nav, site } from '@content/site';
+import { nextEvent } from '@content/events';
+import { locales, localeNames, localizePath, stripLocale, switchLocalePath, useTranslations, type Locale } from '../../i18n';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const current = stripLocale(Astro.url.pathname);
+---
+<a class="skip-link" href="#inhoud">{t('skip')}</a>
+<div class="util">
+  <div class="wrap util__in">
+    <span class="util__ticker"><span class="util__label">{t('ticker.label')} </span><b>{nextEvent.day} {nextEvent.month} · {nextEvent.time} · {nextEvent.venue}</b></span>
+    <span class="util__right">
+      <a class="util__portal" href={site.portalUrl}>{t('portal')}</a>
+      <span class="lang" role="group" aria-label={t('lang.switch')}>
+        {locales.map(l => (
+          <a href={switchLocalePath(Astro.url, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{localeNames[l]}</a>
+        ))}
+      </span>
+    </span>
+  </div>
+</div>
+<header class="mast" data-mast>
+  <div class="wrap mast__in">
+    <span class="mast__edition">{site.edition[0]}<br />{site.edition[1]}</span>
+    <a class="mast__logo" href={localizePath('/', lang)} aria-label="Pretoria Sakekamer — tuis">
+      <picture>
+        <source media="(max-width: 600px)" srcset="/logo/logo-symbol-navy.svg" />
+        <img src="/logo/logo-horizontal-navy.svg" alt="Pretoria Sakekamer" width="433" height="58" />
+      </picture>
+    </a>
+    <span class="mast__actions">
+      <Button size="sm" href={localizePath('/lidmaatskap', lang)}>{t('cta.join')}</Button>
+      <IconButton className="mast__menu" icon="menu" label={t('menu.open')} variant="outline" size={40} aria-expanded={false} aria-controls="hoofnav" />
+    </span>
+  </div>
+</header>
+<nav class="nav" id="hoofnav" aria-label={t('nav.label')} data-nav data-close-label={t('menu.close')}>
+  <div class="wrap nav__in">
+    {nav.map(item => (
+      <a class="nav__link" href={localizePath(item.slug, lang)} aria-current={current === item.slug ? 'page' : undefined}>{item.label}</a>
+    ))}
+    <a class="nav__link nav__portal" href={site.portalUrl}>{t('portal')}</a>
+  </div>
+</nav>
+
+<script>
+  // Sticky shadow after 140px of scroll + mobile menu toggle.
+  const nav = document.querySelector<HTMLElement>('[data-nav]')!;
+  const mast = document.querySelector<HTMLElement>('[data-mast]')!;
+  const btn = mast.querySelector<HTMLButtonElement>('.mast__menu')!;
+  const onScroll = () => {
+    const stuck = window.scrollY > 140;
+    nav.classList.toggle('is-stuck', stuck);
+    mast.classList.toggle('is-stuck', stuck);
+    if (nav.classList.contains('is-open')) placeNav();
+  };
+  const placeNav = () => nav.style.setProperty('--nav-top', Math.round(mast.getBoundingClientRect().bottom) + 'px');
+  const setOpen = (open: boolean) => {
+    if (open) placeNav();
+    nav.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? btn.dataset.closeLabel! : btn.dataset.openLabel!);
+  };
+  btn.dataset.openLabel = btn.getAttribute('aria-label') ?? '';
+  btn.dataset.closeLabel = nav.dataset.closeLabel ?? '';
+  btn.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); btn.focus(); } });
+  window.matchMedia('(min-width: 961px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

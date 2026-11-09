@@ -1,0 +1,24 @@
+---
+/** "Jy hoef dit nie alleen te doen nie." — join in 3 steps, on navy-950. */
+import { Button } from '../ds/core/Button';
+import { Placeholder } from '../site/Placeholder';
+import { joinSteps } from '@content/membership';
+import { localizePath, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<section class="bg-ink-deep py-112">
+  <div class="wrap">
+    <h2 class="join__h">Jy hoef dit nie alleen te doen nie.</h2>
+    <ol class="steps" style="list-style:none;margin-bottom:0;padding:0">
+      {joinSteps.map(s => (
+        <li class="step"><span class="step__n">{s.n}</span><span class="step__t">{s.title}</span><span class="step__d">{s.text}</span></li>
+      ))}
+    </ol>
+    <div class="btn-row join__cta">
+      <Button size="lg" iconRight="arrow-right" href={localizePath('/lidmaatskap', lang) + '#vlakke'}>Word 'n lid</Button>
+      <Button size="lg" variant="secondary" onDark href={localizePath('/funksies', lang)}>Kom eers kuier</Button>
+    </div>
+    <p class="join__note">Stap iii is 'n voorstel. <Placeholder dark>bevestig aanbod</Placeholder></p>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import Hero from '../sections/Hero.astro';
+import PillarIndex from '../sections/PillarIndex.astro';
+import Proof from '../sections/Proof.astro';
+import WhoWants from '../sections/WhoWants.astro';
+import NextEdition from '../sections/NextEdition.astro';
+import Voice from '../sections/Voice.astro';
+import Stories from '../sections/Stories.astro';
+import JoinSteps from '../sections/JoinSteps.astro';
+import { AskTheChamber } from '../islands/AskTheChamber';
+import { Calculator } from '../islands/Calculator';
+import { localizePath, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<Hero lang={lang} />
+<AskTheChamber client:idle />
+<PillarIndex />
+<Proof />
+<Calculator client:idle joinHref={localizePath('/lidmaatskap', lang) + '#vlakke'} />
+<WhoWants lang={lang} />
+<NextEdition />
+<Voice />
+<Stories />
+<JoinSteps lang={lang} />

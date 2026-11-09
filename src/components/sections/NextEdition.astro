@@ -1,0 +1,29 @@
+---
+/** Home §5: Koffie-en-Kenmekaar ticket with perforation and booking button. */
+import { Button } from '../ds/core/Button';
+import { Kicker } from '../site/Kicker';
+import { Placeholder } from '../site/Placeholder';
+import { nextEvent } from '@content/events';
+---
+<section class="bg-white py-96">
+  <div class="wrap">
+    <Kicker n="5">Koffie-en-Kenmekaar</Kicker>
+    <div class="ticket">
+      <img class="ticket__img" src={nextEvent.image} alt="Lede by 'n Koffie-en-Kenmekaar-ontbyt" width="974" height="650" loading="lazy" />
+      <div class="ticket__body">
+        <span class="notch notch--a" aria-hidden="true"></span>
+        <span class="notch notch--b" aria-hidden="true"></span>
+        <div class="ticket__meta"><span>Uitgawe <Placeholder>nr.</Placeholder></span><span>Gaste welkom</span></div>
+        <div class="ticket__date"><span class="ticket__day">{nextEvent.day}</span><span class="ticket__month">{nextEvent.month}<br /><i class="em-gold">{nextEvent.time}</i></span></div>
+        <p class="ticket__p">{nextEvent.description}</p>
+        <dl class="ticket__dl">
+          <dt>Gasspreker</dt><dd><Placeholder>naam en onderwerp</Placeholder></dd>
+          <dt>Pilaar</dt><dd><Placeholder>maand se tema</Placeholder></dd>
+          <dt>Lede</dt><dd><Placeholder>lidprys</Placeholder></dd>
+          <dt>Gaste</dt><dd><Placeholder>volle prys</Placeholder> · twee keer as gas</dd>
+        </dl>
+        <div class="ticket__cta"><Button iconRight="arrow-right" data-action="book">Bespreek my plek</Button></div>
+      </div>
+    </div>
+  </div>
+</section>

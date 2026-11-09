@@ -1,0 +1,34 @@
+---
+import PageHead from '../sections/PageHead.astro';
+import { Kicker } from '../site/Kicker';
+import { Placeholder } from '../site/Placeholder';
+import { aboutLayers, founders, team } from '@content/community';
+---
+<PageHead kicker="Oor ons">Ons glo in Pretoria.<br /><i class="em-gold">Ons glo in haar mense.</i></PageHead>
+<section class="bg-white" style="padding:72px 0">
+  <div class="wrap wrap--1080">
+    <dl style="margin:0">
+      {aboutLayers.map(l => (
+        <div class="layer"><dt class="layer__k">{l.k}</dt><dd class="layer__v" style="margin:0">{l.v}</dd></div>
+      ))}
+    </dl>
+  </div>
+</section>
+<section class="bg-paper py-96">
+  <div class="wrap">
+    <Kicker>Die bestuur</Kicker>
+    <div class="team">
+      {team.map(m => (
+        <div class="person">
+          {m.portrait
+            ? <img class="person__img" src={m.portrait} alt={m.name} loading="lazy" />
+            : <div class="person__img person__img--empty"><Placeholder>portret</Placeholder></div>}
+          <div class="person__name">{m.name}</div>
+          <div class="person__role">{m.role}</div>
+        </div>
+      ))}
+    </div>
+    <p class="founders">{founders}</p>
+    <div class="docs"><Placeholder>jaarverslag (PDF)</Placeholder><Placeholder>grondwet en beleid</Placeholder><Placeholder>PAIA-handleiding</Placeholder></div>
+  </div>
+</section>

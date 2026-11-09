@@ -1,0 +1,13 @@
+---
+/** Inner-page header (PageHead in Pages.jsx): kicker, giant serif title, optional intro. */
+import { Kicker } from '../site/Kicker';
+interface Props { kicker: string; sub?: string }
+const { kicker, sub } = Astro.props;
+---
+<section class="bg-paper pagehead">
+  <div class="wrap">
+    <Kicker>{kicker}</Kicker>
+    <h1 class="h-xl"><slot /></h1>
+    {sub && <p class="pagehead__sub">{sub}</p>}
+  </div>
+</section>

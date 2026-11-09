@@ -1,0 +1,28 @@
+---
+/** Global footer (SiteFooter in Pages.jsx): giant rally cry, logo, links, contact, newsletter. */
+import { Logo } from '../ds/brand/Logo';
+import { Newsletter } from '../islands/Newsletter';
+import { contact, nav, site } from '@content/site';
+import { localizePath, type Locale } from '../../i18n';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<footer class="foot bg-ink">
+  <div class="wrap">
+    <p class="foot__rally" style="margin:0">{site.rally[0]}<br /><i>{site.rally[1]}</i></p>
+    <div class="foot__grid">
+      <Logo variant="reverse" height={34} />
+      <nav class="foot__links" aria-label="Voetskrif">
+        {nav.map(item => <a href={localizePath(item.slug, lang)}>{item.label}</a>)}
+      </nav>
+      <address class="foot__contact" style="font-style:normal">
+        <a href={'tel:' + contact.phone.replace(/\s/g, '')}>{contact.phone}</a>
+        <a href={'mailto:' + contact.email}>{contact.email}</a>
+        <span>{contact.area}</span>
+      </address>
+      <Newsletter client:idle />
+    </div>
+    <div class="foot__base"><span>{site.copyright}</span><span>{site.legal}</span></div>
+  </div>
+</footer>

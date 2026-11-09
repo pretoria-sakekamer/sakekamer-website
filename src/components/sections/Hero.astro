@@ -1,0 +1,30 @@
+---
+/** Home §0: giant "Ons glo in Pretoria.", Klapperkop photo, flipping rally cry. */
+import { Button } from '../ds/core/Button';
+import { Placeholder } from '../site/Placeholder';
+import { RallyFlip } from '../islands/RallyFlip';
+import { localizePath, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<section class="hero bg-paper">
+  <div class="wrap">
+    <div class="hero__grid">
+      <h1 class="hero__title">Ons glo<br />in Pretoria<span class="dot-gold">.</span></h1>
+      <div class="hero__aside">
+        <p class="hero__intro">In haar mense, haar moontlikhede en die toekoms wat ons saam bou. Die Sakekamer verbind die stad se besighede met mekaar, sodat hulle saam kan groei.</p>
+        <div class="btn-row">
+          <Button iconRight="arrow-right" href={localizePath('/lidmaatskap', lang)}>Word 'n lid</Button>
+          <Button variant="secondary" href={localizePath('/funksies', lang)}>Kom kuier as gas</Button>
+        </div>
+      </div>
+    </div>
+    <figure class="hero__fig">
+      <img class="hero__img" src="/images/pretoria-klapperkop-sunset.jpg" alt="Pretoria se stadsgesig vanaf Fort Klapperkop" width="1920" height="1280" fetchpriority="high" />
+      <figcaption class="hero__cap">
+        <span>Pretoria vanaf Fort Klapperkop. Die stad waarin ons glo.</span><span>Foto: <Placeholder>Fotograaf / regte</Placeholder></span>
+      </figcaption>
+    </figure>
+    <RallyFlip client:idle />
+  </div>
+</section>

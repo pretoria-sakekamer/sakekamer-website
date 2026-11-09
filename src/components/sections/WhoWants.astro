@@ -1,0 +1,29 @@
+---
+/** Home §4: "Wie soek wat" classified board. */
+import { Button } from '../ds/core/Button';
+import { Kicker } from '../site/Kicker';
+import { PhValue } from '../site/PhValue';
+import { wanted } from '@content/community';
+import { localizePath, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<section class="bg-paper py-96">
+  <div class="wrap">
+    <Kicker n="4">Wie soek wat · Lede-advertensies</Kicker>
+    <div class="wanted__head">
+      <h2 class="h-m">Sake doen met mekaar begin hier.</h2>
+      <Button variant="ghost" iconRight="arrow-right" href={localizePath('/ledegids', lang)}>Na die ledegids</Button>
+    </div>
+    <div class="board">
+      {wanted.map(w => (
+        <article class="ad">
+          <div class={`ad__kind ad__kind--${w.kind}`}>{w.kind}</div>
+          <p class="ad__text">{w.text}</p>
+          <div class="ad__who">— <PhValue value={w.who} /></div>
+        </article>
+      ))}
+    </div>
+    <p class="fineprint">Voorbeelde. Lede plaas self hul "soek" en "bied" in die lede-portaal; dit word elke maand by die Koffie-en-Kenmekaar voorgelees.</p>
+  </div>
+</section>

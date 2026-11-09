@@ -1,0 +1,46 @@
+/* Type. Display: EB Garamond (replaces JOVERA from the 2023 brand guide). Secondary: Nunito. */
+:root{
+--font-display:'EB Garamond',Garamond,'Times New Roman',serif;
+--font-sans:'Nunito',ui-sans-serif,system-ui,'Segoe UI',sans-serif;
+
+--fw-regular:400; /* @kind font */
+--fw-medium:500; /* @kind font */
+--fw-semibold:600; /* @kind font */
+--fw-bold:700; /* @kind font */
+--fw-black:800; /* @kind font */
+
+/* Display scale (serif) */
+--fs-display-xl:clamp(48px,6.4vw,88px); /* @kind font */
+--fs-display-l:clamp(40px,4.8vw,64px); /* @kind font */
+--fs-h1:clamp(36px,3.8vw,52px); /* @kind font */
+--fs-h2:clamp(30px,3vw,40px); /* @kind font */
+--fs-h3:28px; /* @kind font */
+--fs-h4:22px; /* @kind font */
+/* Sans scale */
+--fs-lead:20px; /* @kind font */
+--fs-body:17px; /* @kind font */
+--fs-small:15px; /* @kind font */
+--fs-caption:13px; /* @kind font */
+--fs-eyebrow:12px; /* @kind font */
+
+--lh-tight:1.05; /* @kind font */
+--lh-heading:1.15; /* @kind font */
+--lh-snug:1.35; /* @kind font */
+--lh-body:1.6; /* @kind font */
+
+--ls-wordmark:.08em; /* @kind font */
+--ls-eyebrow:.2em; /* @kind font */
+--ls-button:.12em; /* @kind font */
+--ls-display:-.005em; /* @kind font */
+
+/* Semantic roles */
+--type-display:var(--fw-medium) var(--fs-display-xl)/var(--lh-tight) var(--font-display); /* @kind font */
+--type-h1:var(--fw-medium) var(--fs-h1)/var(--lh-heading) var(--font-display); /* @kind font */
+--type-h2:var(--fw-medium) var(--fs-h2)/var(--lh-heading) var(--font-display); /* @kind font */
+--type-h3:var(--fw-semibold) var(--fs-h3)/var(--lh-heading) var(--font-display); /* @kind font */
+--type-h4:var(--fw-bold) var(--fs-h4)/var(--lh-snug) var(--font-sans); /* @kind font */
+--type-lead:var(--fw-regular) var(--fs-lead)/var(--lh-body) var(--font-sans); /* @kind font */
+--type-body:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-sans); /* @kind font */
+--type-small:var(--fw-regular) var(--fs-small)/var(--lh-body) var(--font-sans); /* @kind font */
+--type-eyebrow:var(--fw-bold) var(--fs-eyebrow)/1.2 var(--font-sans); /* @kind font */
+}

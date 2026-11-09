@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ValuePage from '../../components/pages/ValuePage.astro';
+import { getLocale } from '../../i18n';
+const lang = getLocale(Astro.url);
+---
+<BaseLayout title="Wat jy kry" description="Ses pilare, een netwerk: SakeKoppel, SakeSkool, SakeGroei, SakeStem, SakeWêreld en SakeDigitaal. Waarde wat lede vir mekaar skep.">
+  <ValuePage lang={lang} />
+</BaseLayout>

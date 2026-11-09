@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MembershipPage from '../components/pages/MembershipPage.astro';
+import { getLocale } from '../i18n';
+const lang = getLocale(Astro.url);
+---
+<BaseLayout title="Lidmaatskap" description="Kies wat jy wil bereik: vyf lidmaatskapvlakke van R100 tot R6 000 per maand. Lidmaatskap betaal vir homself.">
+  <MembershipPage lang={lang} />
+</BaseLayout>

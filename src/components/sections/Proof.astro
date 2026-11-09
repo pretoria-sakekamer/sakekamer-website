@@ -1,0 +1,23 @@
+---
+/** Home §3: report-back figures (placeholders until the first quarter's numbers). */
+import { Kicker } from '../site/Kicker';
+import { Placeholder } from '../site/Placeholder';
+import { PhValue } from '../site/PhValue';
+import { stats } from '@content/community';
+---
+<section class="bg-white py-96 rule-top">
+  <div class="wrap">
+    <Kicker n="3">Verslag aan lede · <Placeholder>kwartaal</Placeholder></Kicker>
+    <div class="proof__grid">
+      <h2 class="h-m">Ons wys net wat ons werklik lewer.</h2>
+      <div class="stats">
+        {stats.map(s => (
+          <div class="stat">
+            <div class="stat__v"><PhValue value={s.value} /></div>
+            <div class="stat__l">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

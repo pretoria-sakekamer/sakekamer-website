@@ -1,0 +1,11 @@
+/* Website-specific tokens (from the handoff README "Design tokens" and the v2 prototype). */
+:root{
+--surface-site:#F6F2EA;          /* warm newsprint page background */
+--rule:1px solid var(--navy-900); /* @kind other — hairline between sections */
+--rule-double:3px double var(--navy-900); /* @kind other — masthead emphasis */
+--rule-dashed:2px dashed var(--navy-900); /* @kind other — ticket perforation */
+--shadow-sticky:0 8px 20px -12px rgba(14,16,48,.35);
+--site-max:1320px;
+--site-gutter:clamp(20px,4vw,56px);
+--stripe:repeating-linear-gradient(135deg,var(--sand) 0 12px,#EFE8DC 12px 24px);
+}

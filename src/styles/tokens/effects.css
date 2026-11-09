@@ -1,0 +1,27 @@
+:root{
+--radius-0:0;
+--radius-1:2px;
+--radius-2:4px;
+--radius-3:8px;
+--radius-pill:999px;
+--radius-button:var(--radius-1);
+--radius-card:var(--radius-2);
+--radius-input:var(--radius-1);
+
+--border-w:1px; /* @kind other */
+--rule-accent:2px solid var(--gold-500); /* @kind other */
+
+--shadow-1:0 1px 2px rgba(14,16,48,.06),0 1px 1px rgba(14,16,48,.04);
+--shadow-2:0 4px 16px -4px rgba(14,16,48,.12),0 2px 4px rgba(14,16,48,.05);
+--shadow-3:0 24px 48px -16px rgba(14,16,48,.28),0 4px 12px rgba(14,16,48,.08);
+--shadow-focus:0 0 0 3px rgba(202,142,49,.45);
+
+--overlay-scrim:rgba(8,10,32,.64); /* @kind color */
+--overlay-photo:linear-gradient(180deg,rgba(8,10,32,.15) 0%,rgba(8,10,32,.55) 55%,rgba(8,10,32,.9) 100%); /* @kind color */
+
+--ease-out:cubic-bezier(.22,.61,.36,1); /* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1); /* @kind other */
+--dur-fast:120ms; /* @kind other */
+--dur-base:200ms; /* @kind other */
+--dur-slow:400ms; /* @kind other */
+}

@@ -1,0 +1,36 @@
+---
+import PageHead from '../sections/PageHead.astro';
+import { Button } from '../ds/core/Button';
+import { Placeholder } from '../site/Placeholder';
+import { eventFormats, months, nextEvent } from '@content/events';
+---
+<PageHead kicker="Funksies" sub="Elke Koffie-en-Kenmekaar fokus op een SAKEPULS-pilaar. Lede kry meer: 'n lidprys en 'n deel net vir lede.">
+  Die maandelikse<br /><i class="em-gold">pols van die Sakekamer.</i>
+</PageHead>
+<section class="bg-white events">
+  <div class="wrap">
+    <ol class="months" style="list-style:none;margin:0;padding:0" aria-label="Koffie-en-Kenmekaar-kalender">
+      {months.map((m, i) => (
+        <li class:list={['month', { 'month--now': i === nextEvent.monthIndex }]} aria-current={i === nextEvent.monthIndex ? 'date' : undefined}>
+          <div class="month__m">{m}</div>
+          {i === nextEvent.monthIndex
+            ? <><div class="month__day">{nextEvent.day}</div><div class="month__t">{nextEvent.title}</div></>
+            : i > nextEvent.monthIndex
+              ? <div class="month__ph"><Placeholder>datum</Placeholder></div>
+              : <div class="month__past">verby</div>}
+        </li>
+      ))}
+    </ol>
+    <div class="formats">
+      {eventFormats.map(f => (
+        <div class="format">
+          <div class="eyebrow">{f.when}</div>
+          <h3>{f.title}</h3>
+          <p>{f.text}</p>
+          <div><Placeholder>volgende datum</Placeholder></div>
+        </div>
+      ))}
+    </div>
+    <div class="events__cta"><Button iconRight="arrow-right" data-action="book">{`Bespreek ${nextEvent.day} ${nextEvent.month}`}</Button></div>
+  </div>
+</section>

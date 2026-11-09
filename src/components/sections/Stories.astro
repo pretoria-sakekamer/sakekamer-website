@@ -1,0 +1,22 @@
+---
+/** Home §7: member stories (2:1:1 grid). All content is placeholder until stories are supplied. */
+import { Kicker } from '../site/Kicker';
+import { Placeholder } from '../site/Placeholder';
+const cards = [true, false, false];
+---
+<section class="bg-paper py-112">
+  <div class="wrap">
+    <Kicker n="7">Pretoria se stories</Kicker>
+    <h2 class="h-m stories__h">Te veel van Pretoria se sakestories word nooit vertel nie. Ons vertel hulle.</h2>
+    <div class="stories__grid">
+      {cards.map(big => (
+        <article class:list={['story', { 'story--big': big }]}>
+          <div class="story__img"><Placeholder>ledefoto</Placeholder></div>
+          <div class="eyebrow">Ledeverhaal · <Placeholder>pilaar</Placeholder></div>
+          <h3 class="story__t">Hoe een verwysing <Placeholder>besigheid</Placeholder> se jaar verander het</h3>
+          <p class="story__p"><Placeholder>Kort ledeverhaal: probleem, wie gehelp het, uitkoms</Placeholder></p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

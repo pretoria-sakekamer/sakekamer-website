@@ -1,0 +1,54 @@
+/* Pretoria Sakekamer colour tokens. Source: Brand Guide p.6 "Color Scheme" — Black Rock #0E1030, Brandy Punch #CA8E31, with 80/60/40/20% tints. */
+:root{
+/* Black Rock (navy) */
+--navy-950:#080A20;
+--navy-900:#0E1030;
+--navy-800:#3E4059;
+--navy-600:#6E7083;
+--navy-400:#9F9FAC;
+--navy-200:#CFCFD6;
+--navy-100:#E7E7EB;
+/* Brandy Punch (gold) */
+--gold-800:#7A5219;
+--gold-700:#8F611E;
+--gold-600:#A87424;
+--gold-500:#CA8E31;
+--gold-400:#D5A55A;
+--gold-300:#DFBB83;
+--gold-200:#EAD2AD;
+--gold-100:#F4E8D6;
+/* Neutrals (warm paper, derived) */
+--white:#FFFFFF;
+--paper:#FAF8F4;
+--sand:#F3EEE6;
+--stone:#E4DED3;
+--stone-dark:#C9C1B3;
+--black:#000000;
+/* Semantic */
+--success:#2F7A4F;--success-bg:#E5F1EA;
+--danger:#B23A2E;--danger-bg:#F7E4E1;
+--warning:#8F611E;--warning-bg:#F4E8D6;
+--info:#0E1030;--info-bg:#E7E7EB;
+
+/* Aliases */
+--brand-primary:var(--navy-900);
+--brand-accent:var(--gold-500);
+--surface-page:var(--white);
+--surface-alt:var(--paper);
+--surface-sunken:var(--sand);
+--surface-card:var(--white);
+--surface-inverse:var(--navy-900);
+--surface-inverse-deep:var(--navy-950);
+--text-strong:var(--navy-900);
+--text-body:#2A2C45;
+--text-muted:#55576E;
+--text-on-inverse:#FFFFFF;
+--text-on-inverse-muted:#B7B8C6;
+--text-accent:var(--gold-700);
+--text-accent-on-inverse:var(--gold-500);
+--border-subtle:var(--stone);
+--border-strong:var(--stone-dark);
+--border-inverse:rgba(255,255,255,.16);
+--border-accent:var(--gold-500);
+--focus-ring:var(--gold-500);
+}

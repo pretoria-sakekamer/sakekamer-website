@@ -1,0 +1,9 @@
+---
+import PageHead from '../sections/PageHead.astro';
+import { Directory } from '../islands/Directory';
+import { localizePath, type Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<PageHead kicker="Ledegids">Doen sake<br /><i class="em-gold">met mekaar.</i></PageHead>
+<Directory client:load askHref={localizePath('/', lang) + '#vra-die-kamer'} />

@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import Masthead from '../components/site/Masthead.astro';
+import SiteFooter from '../components/site/SiteFooter.astro';
+import { GlobalUI } from '../components/islands/GlobalUI';
+import { Placeholder } from '../components/site/Placeholder';
+import { site } from '@content/site';
+import { defaultLocale, getLocale, locales, localizePath, stripLocale, useTranslations } from '../i18n';
+
+interface Props {
+  /** Page title (without the site suffix). Omit on the home page. */
+  title?: string;
+  description?: string;
+  image?: string;
+}
+const { title, description = site.description, image = '/images/pretoria-klapperkop-sunset.jpg' } = Astro.props;
+const lang = getLocale(Astro.url);
+const t = useTranslations(lang);
+const fullTitle = title ? `${title} · ${site.name}` : site.title;
+const path = stripLocale(Astro.url.pathname);
+const canonical = new URL(localizePath(path, lang), Astro.site);
+const ogImage = new URL(image, Astro.site);
+// English pages exist as scaffolding only (Afrikaans copy + banner) until the EN copy arrives,
+// so they are kept out of search results and the page language stays Afrikaans.
+const isEnScaffold = lang !== defaultLocale;
+---
+<!doctype html>
+<html lang="af">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!isEnScaffold && locales.filter(l => l === defaultLocale).map(l => (
+      <link rel="alternate" hreflang={l} href={new URL(localizePath(path, l), Astro.site)} />
+    ))}
+    {isEnScaffold && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#0E1030" />
+    <link rel="icon" type="image/svg+xml" href="/logo/logo-symbol-navy.svg" />
+    <link rel="preload" href="/fonts/EBGaramond-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Nunito-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="af_ZA" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <Masthead lang={lang} />
+    {isEnScaffold && (
+      <div class="en-banner" lang="en">{t('en.banner')} <Placeholder>EN-kopie</Placeholder></div>
+    )}
+    <main id="inhoud" tabindex="-1"><slot /></main>
+    <SiteFooter lang={lang} />
+    <GlobalUI client:load />
+  </body>
+</html>

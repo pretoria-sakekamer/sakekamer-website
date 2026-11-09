@@ -1,0 +1,18 @@
+---
+/** Home §6: the chairman's voice. */
+import { Kicker } from '../site/Kicker';
+import { Placeholder } from '../site/Placeholder';
+import { chairQuote } from '@content/community';
+---
+<section class="bg-ink py-112">
+  <div class="wrap wrap--1080">
+    <Kicker n="6" dark>Uit die voorsitter se pen</Kicker>
+    <figure style="margin:0">
+      <blockquote class="voice__q"><span>“</span>{chairQuote.quote}<span>”</span></blockquote>
+      <figcaption class="voice__by">
+        <div class="avatar" aria-hidden="true">{chairQuote.initials}</div>
+        <div><div class="voice__name">{chairQuote.name}</div><div class="voice__role">{chairQuote.role} · <Placeholder dark>portret</Placeholder></div></div>
+      </figcaption>
+    </figure>
+  </div>
+</section>

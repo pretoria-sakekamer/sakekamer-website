@@ -1,0 +1,32 @@
+---
+import PageHead from '../sections/PageHead.astro';
+import JoinSteps from '../sections/JoinSteps.astro';
+import { Placeholder } from '../site/Placeholder';
+import { pillars } from '@content/pillars';
+import type { Locale } from '../../i18n';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+---
+<PageHead kicker="Wat jy kry" sub="Ons het nie 'n groot personeel nodig om waarde te lewer nie. Die slimste waarde kom van lede vir mekaar, met die Sakekamer as die verbinder.">
+  Waarde wat lede<br /><i class="em-gold">vir mekaar skep.</i>
+</PageHead>
+{pillars.map((p, i) => (
+  <section class:list={['band', i % 2 ? 'bg-paper' : 'bg-white']} id={p.name.toLowerCase()} aria-labelledby={'band-' + p.n}>
+    <div class="wrap band__grid">
+      <span class="band__n" aria-hidden="true">{p.n}</span>
+      <div>
+        <div class="band__name">{p.name}</div>
+        <h2 class="band__h" id={'band-' + p.n}>{p.line}</h2>
+      </div>
+      <div class="band__body">
+        <p>{p.body}</p>
+        <div class="band__meta">
+          <span><span class="muted">Net vir lede · </span>{p.only}</span>
+          <span><span class="muted">Binnekort · </span>{p.soon}</span>
+        </div>
+        <div><Placeholder>drywer van die pilaar</Placeholder></div>
+      </div>
+    </div>
+  </section>
+))}
+<JoinSteps lang={lang} />

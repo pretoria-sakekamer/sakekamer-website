@@ -1,0 +1,17 @@
+---
+/** Home §2: sticky heading + SAKEPULS pillar accordion. */
+import { Kicker } from '../site/Kicker';
+import { PillarAccordion } from '../islands/PillarAccordion';
+---
+<section class="bg-paper py-112" aria-labelledby="pilare-h">
+  <div class="wrap">
+    <Kicker n="2">Wat jy as lid kry</Kicker>
+    <div class="pillars__grid">
+      <div class="pillars__intro">
+        <h2 id="pilare-h" class="h-l">Ses pilare.<br /><i class="em-gold">Een netwerk.</i></h2>
+        <p class="pillars__lead">Die waarde kom van lede vir mekaar, met die Sakekamer as die verbinder. Dit word sterker met elke nuwe lid.</p>
+      </div>
+      <PillarAccordion client:idle />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/sections/PageHead.astro';
+import { Button } from '../components/ds/core/Button';
+---
+<BaseLayout title="Bladsy nie gevind nie">
+  <PageHead kicker="404">Hierdie bladsy<br /><i class="em-gold">bestaan nie.</i></PageHead>
+  <section class="bg-white py-80"><div class="wrap"><Button iconRight="arrow-right" href="/">Terug na die tuisblad</Button></div></section>
+</BaseLayout>
